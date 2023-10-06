@@ -11,7 +11,6 @@ datasets/lvis
 datasets/cifar-10-batches-py
 
 *.png
-*.json
 !vscode_launch.json
 !/detectron2/data/classnames/*.json
 *.diff
@@ -69,3 +68,8 @@ tensorboard
 /weights
 /datasets
 !demo/ycb_prototypes.pth
+/project
+supervisely.env
+input_data
+detectron2_lib
+/detectron2/
