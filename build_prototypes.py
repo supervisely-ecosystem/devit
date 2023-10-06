@@ -39,7 +39,7 @@ class2images = {"hummingbird": []}
 image_files = sly.fs.list_files_recursively("./input_data/img/")
 for image_file in image_files:
     image_name = os.path.basename(image_file)
-    mask_file = "./input_data/masks/" + image_name
+    mask_file = "./input_data/masks/" + image_name[:-4] + "png"
     class2images["hummingbird"].append((image_file, mask_file))
 
 model = torch.hub.load("facebookresearch/dinov2", "dinov2_vitl14")
@@ -54,6 +54,7 @@ for cls, images in tqdm(class2images.items()):
         mask = tv.io.read_image(mask_file).permute(1, 2, 0)
 
         mask = torch.as_tensor(resize.apply_segmentation(mask.numpy())).permute(2, 0, 1) != 0
+        mask = mask[0, :, :].unsqueeze(0)
         image = torch.as_tensor(resize.apply_image(image.numpy())).permute(2, 0, 1)
 
         image14 = resize_to_closest_14x(image)

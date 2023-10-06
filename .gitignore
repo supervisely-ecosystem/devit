@@ -10,7 +10,7 @@ datasets/coco
 datasets/lvis
 datasets/cifar-10-batches-py
 
-*.png
+
 !vscode_launch.json
 !/detectron2/data/classnames/*.json
 *.diff

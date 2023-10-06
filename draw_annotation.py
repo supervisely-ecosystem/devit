@@ -16,9 +16,9 @@ for image_file in image_files:
         ann = sly.Annotation.from_json(ann_json, project_meta)
         image = sly.image.read(image_file)
         mask = np.zeros(image.shape)
+        output_path = "./input_data/masks/" + image_name[:-4] + "png"
         ann.draw_pretty(
             mask,
-            output_path="./masks/pexels_162223.png",
+            output_path=output_path,
             thickness=7,
         )
-        sly.image.write("./input_data/masks/" + image_name, mask)
