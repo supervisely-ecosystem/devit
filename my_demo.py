@@ -172,7 +172,7 @@ def main(
     overlapping_mode=True,
     topk=1,
     output_pth=False,
-    threshold=0.45,
+    threshold=0.9,
 ):
     assert osp.abspath(image_dir) != osp.abspath(output_dir)
     os.makedirs(output_dir, exist_ok=True)
@@ -290,6 +290,7 @@ def main(
                 boxes,
                 labels=[label_names[cid] for cid in pred_classes.tolist()],
                 colors=colors,
+                width=30,
             )
         )
         output.save(osp.join(output_dir, base_filename + ".out.jpg"))
