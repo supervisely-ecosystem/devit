@@ -15,3 +15,4 @@ RUN apt-get install ffmpeg libgeos-dev libsm6 libxext6 libexiv2-dev libxrender-d
 RUN pip install opencv-python
 
 RUN apt-get -y install wget
+RUN pip3 install gdown
